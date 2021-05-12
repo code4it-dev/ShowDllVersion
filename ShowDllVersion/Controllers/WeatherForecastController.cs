@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShowDllVersion.Controllers
+namespace ShowAssemblyVersion.Controllers
 {
     [ApiController]
     [Route("[controller]")]

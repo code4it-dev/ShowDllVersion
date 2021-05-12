@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowDllVersion", "ShowDllVersion\ShowDllVersion.csproj", "{1EF53690-C678-454F-9598-8F79580F9825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowAssemblyVersion", "ShowDllVersion\ShowAssemblyVersion.csproj", "{1EF53690-C678-454F-9598-8F79580F9825}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

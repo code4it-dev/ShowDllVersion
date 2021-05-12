@@ -8,7 +8,7 @@ using System.Dynamic;
 using System.Reflection;
 using System.Text.Json;
 
-namespace ShowDllVersion
+namespace ShowAssemblyVersion
 {
     public class Startup
     {
@@ -41,14 +41,25 @@ namespace ShowDllVersion
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    dynamic result = new ExpandoObject();
-                    result.version = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
-                    string versionAsText = JsonSerializer.Serialize(result);
-                    await context.Response.WriteAsync(versionAsText);
-                });
+                endpoints.WithAssemblyVersionOnRoot();
                 endpoints.MapControllers();
+            });
+        }
+    }
+
+    public static class AssemblyVersionExtension
+    {
+        public static void WithAssemblyVersionOnRoot(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder endpoints)
+        {
+            endpoints.MapGet("/", async context =>
+            {
+                dynamic result = new ExpandoObject();
+                Assembly assembly = Assembly.GetEntryAssembly();
+                AssemblyInformationalVersionAttribute versionAttribute = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
+                string assemblyVersion = versionAttribute.InformationalVersion;
+                result.version = assemblyVersion;
+                string versionAsText = JsonSerializer.Serialize(result);
+                await context.Response.WriteAsync(versionAsText);
             });
         }
     }

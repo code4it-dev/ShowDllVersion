@@ -1,6 +1,6 @@
 using System;
 
-namespace ShowDllVersion
+namespace ShowAssemblyVersion
 {
     public class WeatherForecast
     {
